@@ -1,0 +1,262 @@
+:root {
+  /* color */
+  --white-color: #fff;
+  --black-color: #140a00;
+  --blue-color: #045fd4;
+  --red-color: #ff0000;
+  --grey-darck-color: #909090;
+  --grey-light-color: #e0e0e0;
+
+  /* size */
+  --padding: 12px;
+  --avatar-size: 36px;
+
+  /* font Size */
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* 패딩 마진 포함한 박스사이징 */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  width: 500px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--black-color);
+  color: var(--white-color);
+  margin: 0;
+  padding: var(--padding);
+}
+
+/* 참 */
+header .logo {
+  font-size: var(--font-large);
+}
+/* 고 */
+
+header .logo i {
+  color: var(--red-color);
+}
+
+/* 참 */
+header .icons .fa-search {
+  margin-right: var(--padding);
+}
+/* 고 */
+
+/* header 끝 */
+
+/* 참 */
+.player {
+  /* 비디오도 <텍스트>와 같이 너비가 넓어지면 왼쪽 정렬하므로 중간으로 정렬 필요: 정렬하려는거 상단 태그에 css 작성 */
+  text-align: center;
+  background: var(--black-color);
+  /* 내려도 비디오 상단에 고정하기 위해서는 포지션 스티키 써주고 기준을 적어야 */
+  position: sticky;
+  top: 0;
+}
+
+.player video {
+  /* 콘텐츠를 반응형으로 만드는 방법은 높이 너비 100퍼 */
+  width: 100%;
+  height: 100%;
+  /* 하지만 너무 커지게 되서 아래 내용이 안보이면 안되니 제한을 둬야함 */
+  max-width: 1000px;
+}
+/* 고 */
+
+/* player 끝 */
+.info {
+  padding: var(--padding) var(--padding) 0 var(--padding);
+}
+
+ul {
+  list-style: none;
+}
+
+.hashtags {
+  display: flex;
+  font-size: var(--font-small);
+  color: var(--blue-color);
+}
+
+.hashtags li {
+  margin-right: var(--padding);
+}
+
+.titleandbutton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleandbutton .title {
+  font-size: var(--font-medium);
+  /* 두 줄 이상 안나오게 하고 싶으면 css line clamp 검색 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.morebtn {
+  border: none;
+  background-color: var(--white-color);
+  margin-left: var(--padding);
+  /* 버튼을 위쪽에 고정하고 싶으면 */
+  height: 100%;
+}
+
+.views {
+  font-size: var(--font-small);
+  color: var(--grey-darck-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--padding);
+  border-bottom: var(--grey-light-color) solid 1px;
+}
+
+.actions button {
+  border: none;
+  background: var(--white-color);
+}
+
+.info .actions button {
+  color: var(--grey-darck-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info .actions button i {
+  margin-bottom: calc(var(--padding) / 2);
+  font-size: 16px;
+}
+
+/* 액티브 된 거만 파란색으로 */
+.info .actions button i.active {
+  color: var(--blue-color);
+}
+
+/* 버튼선택 후 생기는 테두리는 어떻게 없애야할까 */
+.info .actions button:focus {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* 버튼 끝 */
+
+.info .channel {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding);
+  border-bottom: var(--grey-light-color) solid 1px;
+}
+
+.info .channel .metadata {
+  display: flex;
+}
+
+.info .channel .metadata div {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--padding);
+}
+
+.info .channel .metadata div span:last-child {
+  font-size: var(--font-small);
+  color: var(--grey-darck-color);
+}
+
+.info .channel .metadata img {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+}
+
+.info .channel button {
+  border: none;
+  color: var(--red-color);
+  background: var(--white-color);
+}
+
+/* 채널 끝 */
+
+.upnext {
+  padding: var(--padding);
+}
+
+.upnext .title {
+  font-size: var(--font-medium);
+  color: var(--grey-darck-color);
+  margin-bottom: var(--padding);
+}
+
+.upnext ul .item {
+  display: flex;
+  margin: var(--padding) 0;
+}
+/* flex박스 안 아이템들이 일정한 비율로 유지되게 하고 싶으면? 각 아이템이 100기준 분배. 대신 이미지를 html에서 다시 div로 묶고 거기 적용. 이미지 크기는 직접 적용 */
+.upnext ul li .img {
+  flex: 1 1 35%;
+}
+
+.upnext ul li .img img {
+  width: 100%;
+}
+
+.upnext ul li .info {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.upnext ul li .info .title {
+  margin-bottom: calc(var(--padding) / 2);
+  color: var(--black-color);
+}
+
+.upnext ul li .info .name {
+  color: var(--grey-darck-color);
+  font-size: 13px;
+}
+
+.upnext ul li .morebtn {
+  flex: 1 1 5%;
+}
+
+/* upnext 끝 */
+
+.infoandupnext {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .infoandupnext {
+    flex-direction: row;
+  }
+  .info {
+    flex: 1 1 50%;
+  }
+  .upnext {
+    flex: 1 1 50%;
+  }
+}
